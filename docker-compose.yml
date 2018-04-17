@@ -1,0 +1,26 @@
+version: '2.1'
+
+sevices:
+
+  fileserver:
+    container_name: book_fileserver
+    build:
+      context: ./FileServer/
+      dockerfile: Dockerfile
+      restart: "no"
+
+    ports:
+      - "5555:5555"
+    volumes:
+      - ./FileServer/appcode:/usr/src/app/
+    
+    dashboard:
+      container_name: book_dashboard
+      build:
+        context: ./Dashboard/
+        dockerfile: Dockerfile
+      ports:
+        - "8080:8080"
+
+      volumex:
+        - ./Dashboard/appcode:/usr/src/app/

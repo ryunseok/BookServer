@@ -1,0 +1,20 @@
+{
+    "DEFAULT" : { 
+        "HOST" : "127.0.0.1",
+        "PORT" : 5555,
+        "DEBUG" : true
+
+    },
+    "CORS" : {
+        "CORS_HEADERS" : "Content-Type"
+    },
+    
+    "DATABASE" : {  
+    },
+    "SQLALCHEMY" : {
+    },
+    "UPLOADFOLDER" : "D:/Book/"
+
+    
+    
+}
