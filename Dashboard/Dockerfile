@@ -2,10 +2,7 @@ FROM python:3
 
 LABEL maintainer "Ryunseok Kim <ryunseok@gmail.com>"
 
-RUN apt-get update && apt-get install -y nano
-
 COPY requirements.txt ./
-RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
 WORKDIR /usr/src/app

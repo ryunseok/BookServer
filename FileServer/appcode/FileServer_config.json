@@ -1,8 +1,9 @@
 {
     "DEFAULT" : { 
-        "HOST" : "127.0.0.1",
+        "HOST" : "192.168.1.17",
         "PORT" : 5555,
-        "DEBUG" : true
+        "DEBUG" : true,
+        "OUTPUT_LOGFOLDER" : "./output_logs"
 
     },
     "CORS" : {
@@ -13,7 +14,8 @@
     },
     "SQLALCHEMY" : {
     },
-    "UPLOADFOLDER" : "D:/Book/"
+    
+    "UPLOADFOLDER" : "../book"
 
     
     
