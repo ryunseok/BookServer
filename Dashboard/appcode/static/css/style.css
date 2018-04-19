@@ -1,0 +1,38 @@
+     #jb-container {
+         width: auto;
+         margin: 0px auto;
+         padding: 20px;
+         border: 1px solid #bcbcbc;
+     }
+
+     #jb-header {
+         width: auto;
+         padding: 20px;
+         margin-bottom: 20px;
+         border: 1px solid #bcbcbc;
+     }
+
+     #jb-content {
+         width: auto;
+         height: 200px;
+         padding: 20px;
+         margin-bottom: 20px;
+         float: left;
+         border: 1px solid #bcbcbc;
+         overflow: auto;
+     }
+
+     #jb-content-image {
+         width: auto;
+         padding: 20px;
+         margin-bottom: 20px;
+         float: right;
+         border: 1px solid #bcbcbc;
+     }
+
+     #jb-footer {
+         width: auto;
+         clear: both;
+         padding: 20px;
+         border: 1px solid #bcbcbc;
+     }

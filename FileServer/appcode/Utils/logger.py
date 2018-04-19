@@ -5,7 +5,6 @@ from os import F_OK
 from stat import ST_MODE,S_ISDIR,S_ISREG
 from datetime import date, datetime
 
-
 class Logger() :
     def __init__(self, log_tag, debug_mode, param):
 

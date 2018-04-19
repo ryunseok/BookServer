@@ -1,0 +1,7 @@
+flask
+flask-cors
+flask-mysqldb
+flask-wtf
+passlib
+requests
+jinja2

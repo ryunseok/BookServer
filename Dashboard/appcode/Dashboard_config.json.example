@@ -1,0 +1,20 @@
+{
+    "DEFAULT" : {        
+        "PORT" : 8080,
+        "DEBUG" : true,
+        "OUTPUT_LOGFOLDER" : "./output_logs"
+        
+
+    },
+    "FILESERVER" :{
+        "IP" : "172.18.0.2",
+        "SCHEMA" : "http://",
+        "PORT" : "5555"
+
+    },
+    "CORS" : {
+        "CORS_HEADERS" : "Content-Type"
+    }
+   
+    
+}

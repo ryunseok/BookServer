@@ -1,0 +1,62 @@
+<!doctype html>
+{% set updateList = update %}
+{% set quicklink = quicklink %}
+{% set folder = folder %}
+{% set upFolder = upFolder %}
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>함락</title>
+    <link href="{{url_for('static',filename='css/style.css')}}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div id="jb-container">
+        <div id="jb-header">
+            <h1>Quick Link</h1>
+            <ul>
+                {% for key, value in quicklink.items() %}
+                <li>
+                    <tr>
+                        <a href="{{ value.filePath }}">{{ key }}</a>
+                    </tr>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div id="jb-content">
+            <h2>
+                <!-- {{folder}} -->
+            </h2>
+            <li>
+                <a href="{{ upFolder }}">상위 폴더로</a>
+            </li>
+            {% for key, value in folder.items() %}
+            <li>
+                <tr>
+                    <a href="{{ value.filePath }}">{{ key }}</a>
+                </tr>
+            </li>
+            {% endfor %}
+        </div>
+        <div id="jb-content-image">
+            <h2>
+                <!-- <img src="<%= bookcover %>"> -->
+            </h2>
+        </div>
+        <div id="jb-footer">
+            
+            <h3>Update List(60일 이내) : {{updateList|length}} 권</h3>
+            {% for key, value in updateList.items() %}
+            <li>
+                <tr>
+                    <a href="{{ value.ParentFolder }}">{{ key }}</a>
+                </tr>
+            </li>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>
