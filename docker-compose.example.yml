@@ -1,0 +1,26 @@
+version: '2.1'
+
+services:
+
+  fileserver:
+    container_name: "<file_server_name>"
+    build:
+      context: ./FileServer/
+      dockerfile: Dockerfile    
+
+    ports:
+      - "5555:5555"
+    volumes:
+      - ./FileServer/appcode:/usr/src/app/ 
+      - "<upload_folder_relative_path>":/usr/src/book/
+    
+  dashboard:
+    container_name: "<dashboard_name>"
+    build:
+      context: ./Dashboard/
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+
+    volumes:
+      - ./Dashboard/appcode:/usr/src/app/

@@ -7,7 +7,7 @@
 
     },
     "FILESERVER" :{
-        "IP" : "172.18.0.2",
+        "IP" : "<YOUR_FILE_SERVER_IP>",
         "SCHEMA" : "http://",
         "PORT" : "5555"
 

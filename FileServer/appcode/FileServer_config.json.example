@@ -1,10 +1,10 @@
 {
     "DEFAULT" : { 
-        "HOST" : "192.168.1.17",
+        "HOST" : "<YOUR_FILE_SERVER_IP>",
         "PORT" : 5555,
         "DEBUG" : true,
         "OUTPUT_LOGFOLDER" : "./output_logs",
-        "UPDATEDLIST_INDAYS" : 60
+        "UPDATEDLIST_INDAYS" : "<UPDATED_IN_DAYS>
 
     },
     "CORS" : {
