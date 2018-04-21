@@ -44,8 +44,13 @@ server_config = config['DEFAULT']
 
 # config File Server
 file_server_config = config['FILESERVER']
-
 http_client = HTTPCLIENT(file_server_config)
+
+
+logger = logging.getLogger('Test')
+logger.setLevel(logging.DEBUG)
+logStreamHandler = logging.StreamHandler()
+logger.addHandler(logStreamHandler)
 
 
 @app.route('/favicon.ico')
@@ -76,7 +81,8 @@ def getFolderInfo(resource):
     # for key in folder :
 
     content_type = response.headers['Content-Type'].split('/')[1]
-    print('Content Type : {}'.format(content_type))
+    # print('Content Type : {}'.format(content_type))
+    logger.info('headers : {}'.format(response.headers))
     if content_type == 'json':
         folder = json.loads(response.text)
         keys = folder.keys()
@@ -88,14 +94,15 @@ def getFolderInfo(resource):
             if upFolder == '':
                 upFolder = '/dashboard'
             return render_template('dashboard.html', quicklink=quicklink, update=updateList, folder=folder, upFolder=upFolder)
-        else :
+        else:
             return redirect(url_for('dashboard'))
-    elif content_type == 'pdf':
+    elif content_type == 'pdf' or content_type == 'zip':
         return Response(response.content,
-                        headers={'Content-Disposition': response.headers['Content-Disposition']})
-    elif content_type == 'zip':
-        return Response(response.content,
-                        headers={'Content-Disposition': response.headers['Content-Disposition']})
+                        headers={
+                            'Content-Disposition': response.headers['Content-Disposition'],
+                            'Content-Type' : response.headers['Content-Type']})
+    
+      
     else:
         return '<strong>Page Not Found!</strong>', 404
 
@@ -112,12 +119,12 @@ def not_found(e):
 
 @app.route('/')
 def index():
-    return render_template('login.html', data={'response': None})
+    return render_template('login.html', data = {'response': None})
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods = ['GET', 'POST'])
 def login():
-    data = {
+    data={
         'response': None
     }
 
