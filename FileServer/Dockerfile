@@ -2,7 +2,7 @@ FROM python:3
 
 LABEL maintainer "Ryunseok Kim <ryunseok@gmail.com>"
 
-RUN apt-get update && apt-get install -y nano
+RUN apt-get update
 
 COPY requirements.txt ./
 RUN pip install --upgrade pip

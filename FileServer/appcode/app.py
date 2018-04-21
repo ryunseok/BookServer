@@ -69,6 +69,13 @@ def build_pathInfo(path):
                 if sub_path.lower().endswith(supportedExt) is False:
                     continue
                 else:
+                    #check Novel,Comic,etc.
+                    if '소설' in sub_path :
+                        category = '소설'
+                    elif '만화' in sub_path :
+                        category = '만화'
+                    else:
+                        category = '기타'
                     fileSize = sub_stat_info[stat.ST_SIZE]
 
             # the time ot the last metadata change(UNIX), and, on others(Like Windows), is creation time
@@ -80,7 +87,8 @@ def build_pathInfo(path):
                 'filePath': sub_path.replace(base_folder, ''),
                 'creationTime': DateTime,
                 'isDirectory': isDirectory,
-                'fileSize': fileSize
+                'fileSize': fileSize,
+                'category' : category
             }
 
             folder_tree.update({subDir: file_desc})
@@ -144,4 +152,4 @@ def returnBaseFolder():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',
-            port=server_config['PORT'], debug=server_config['DEBUG'])
+            port=server_config['PORT'], debug=True)

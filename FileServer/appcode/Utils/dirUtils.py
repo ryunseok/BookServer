@@ -58,12 +58,21 @@ class UpdateList() :
                     fileName = split_path[len(split_path)- 1]    
                     # Series
                     series = split_path[len(split_path)- 2] 
+
+                    #check Novel,Comic,etc.
+                    if '소설' in parentFolder :
+                        category = '소설'
+                    elif '만화' in parentFolder :
+                        category = '만화'
+                    else:
+                        category = '기타'
                 
                     updateList = {
                         "DateTime" : DateTime,
                         "FileSize" : fileSize,
                         "ParentFolder" : '/' + parentFolder,
-                        "FileName" : fileName                        
+                        "FileName" : fileName,
+                        "Category" : category                        
                     }  
                     # callback(updateList)
                     totalUpdatedList.update({series : updateList})
