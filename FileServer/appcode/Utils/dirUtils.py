@@ -61,19 +61,20 @@ class UpdateList() :
 
                     #check Novel,Comic,etc.
                     if '소설' in parentFolder :
-                        category = '소설'
+                        category = '소설'                        
                     elif '만화' in parentFolder :
                         category = '만화'
                     else:
                         category = '기타'
+                    prefix = '[' + category + ']'
                 
                     updateList = {
-                        "DateTime" : DateTime,
+                        "CreationTime" : cTime,
                         "FileSize" : fileSize,
                         "ParentFolder" : '/' + parentFolder,
                         "FileName" : fileName,
                         "Category" : category                        
                     }  
-                    # callback(updateList)
-                    totalUpdatedList.update({series : updateList})
+                    # callback(updateList)                    
+                    totalUpdatedList.update({prefix + series + '\t\t\t : ' + DateTime : updateList})
                     

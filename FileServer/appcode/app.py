@@ -85,7 +85,7 @@ def build_pathInfo(path):
             file_desc = {
                 'parentFolder': sub_path.replace('/' + subDir, '').replace(base_folder, ''),
                 'filePath': sub_path.replace(base_folder, ''),
-                'creationTime': DateTime,
+                'DateTime': DateTime,
                 'isDirectory': isDirectory,
                 'fileSize': fileSize,
                 'category' : category

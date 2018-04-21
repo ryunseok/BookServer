@@ -14,6 +14,7 @@ import os
 import logging
 import stat
 
+import time
 from datetime import date, datetime
 from client.httpclient import HTTPCLIENT
 
@@ -161,6 +162,19 @@ response = response = http_client.get('recentUpdated')
 updateList = json.loads(response.text)
 
 
+
+def sort_by_date(rows):
+    # print(rows[1]['CreationTime'])
+    # print(rows)
+    return rows[1]['CreationTime']
+   
+# sort_by_date(updateList)
+updateList_sorted = sorted(updateList.items(), key= sort_by_date ,reverse=True)
+
+    
+
+
+
 @app.route('/dashboard', methods=['GET'])
 @is_logged_in
 def dashboard():
@@ -169,7 +183,7 @@ def dashboard():
     response = http_client.get()
     folder = json.loads(response.text)
 
-    return render_template('dashboard.html', quicklink=quicklink, update=updateList, folder=folder)
+    return render_template('dashboard.html', quicklink=quicklink, update=updateList_sorted, folder=folder)
 
 
 if __name__ == '__main__':
