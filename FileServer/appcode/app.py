@@ -64,6 +64,7 @@ def build_pathInfo(path):
 
             # check directory or file
             isDirectory = stat.S_ISDIR(sub_stat_info[stat.ST_MODE])
+            category = ''
             if isDirectory is False:
                 if sub_path.lower().endswith(supportedExt) is False:
                     continue
@@ -117,6 +118,9 @@ def build_pathInfo(path):
                 )
                 return response
 
+@app.route('/favicon.ico')
+def favicon():
+    return Response(None,headers=None,status=200)
 
 @app.route('/recentUpdated', methods=['GET'])
 @cross_origin()
