@@ -170,11 +170,7 @@ def sort_by_date(rows):
    
 # sort_by_date(updateList)
 updateList_sorted = sorted(updateList.items(), key= sort_by_date ,reverse=True)
-
-    
-
-
-
+updateList_sorted = tuple(updateList_sorted)
 @app.route('/dashboard', methods=['GET'])
 @is_logged_in
 def dashboard():

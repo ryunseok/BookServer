@@ -48,7 +48,7 @@
         <div id="jb-footer">
             
             <h3>Update List(60일 이내) : {{updateList|length}} 권</h3>
-            {% for key, value in updateList %}
+            {% for key, value in updateList.items() %}
             <li>
                 <tr>
                     <a href="{{ value.ParentFolder }}">{{ key }}</a>

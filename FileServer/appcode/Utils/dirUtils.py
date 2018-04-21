@@ -76,5 +76,5 @@ class UpdateList() :
                         "Category" : category                        
                     }  
                     # callback(updateList)                    
-                    totalUpdatedList.update({prefix + series + '\t\t\t : ' + DateTime : updateList})
+                    totalUpdatedList.update({prefix + series + '        ' + DateTime : updateList})
                     
