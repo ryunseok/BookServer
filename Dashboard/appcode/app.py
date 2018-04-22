@@ -94,7 +94,7 @@ def getFolderInfo(resource):
             upFolder = '/'.join(upFolder[0:len(upFolder)-1])
             if upFolder == '':
                 upFolder = '/dashboard'
-            return render_template('dashboard.html', quicklink=quicklink, update=updateList, folder=folder, upFolder=upFolder)
+            return render_template('dashboard.html', quicklink=quicklink, update=updateList_dict, folder=folder, upFolder=upFolder)
         else:
             return redirect(url_for('dashboard'))
     elif content_type == 'pdf' or content_type == 'zip':
@@ -161,8 +161,6 @@ quicklink = json.loads(response.text)
 response = response = http_client.get('recentUpdated')
 updateList = json.loads(response.text)
 
-
-
 def sort_by_date(rows):
     # print(rows[1]['CreationTime'])
     # print(rows)
@@ -170,7 +168,15 @@ def sort_by_date(rows):
    
 # sort_by_date(updateList)
 updateList_sorted = sorted(updateList.items(), key= sort_by_date ,reverse=True)
-updateList_sorted = tuple(updateList_sorted)
+
+# conver list(key, value) to dict(key:value)
+updateList_dict = dict()
+for key,value in updateList_sorted :
+    # print('{} : {}'. format(key,value))
+    updateList_dict.update({key : value}) 
+print(updateList_dict)
+
+
 @app.route('/dashboard', methods=['GET'])
 @is_logged_in
 def dashboard():
@@ -179,7 +185,7 @@ def dashboard():
     response = http_client.get()
     folder = json.loads(response.text)
 
-    return render_template('dashboard.html', quicklink=quicklink, update=updateList_sorted, folder=folder)
+    return render_template('dashboard.html', quicklink=quicklink, update=updateList_dict, folder=folder)
 
 
 if __name__ == '__main__':
